@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using OrderAPI.Model;
+﻿using OrderAPI.Model;
 
 namespace OrderAPI.Data
 {
@@ -27,23 +21,5 @@ namespace OrderAPI.Data
         {
             return Orders.Count + 1;
         }
-
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    var phtoBook
-        //    modelBuilder.Entity<ProductType>().HasData(
-        //        new ProductType { Id = 1, Name = "photoBook", Width = 19 });
-        //    modelBuilder.Entity<ProductType>().HasData(
-        //        new ProductType { Id = 2, Name = "calendar", Width = 10 });
-        //    modelBuilder.Entity<ProductType>().HasData(
-        //        new ProductType { Id = 3, Name = "canvas", Width = 16 });
-        //    modelBuilder.Entity<ProductType>().HasData(
-        //        new ProductType { Id = 4, Name = "cards", Width = 4.7m });
-        //    modelBuilder.Entity<ProductType>().HasData(
-        //        new ProductType { Id = 5, Name = "mug", Width = 94 });
-
-        //}
-
     }
 }

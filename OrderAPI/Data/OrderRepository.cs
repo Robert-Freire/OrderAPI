@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OrderAPI.Model;
-using System.Xml.Linq;
+﻿using OrderAPI.Model;
 
 namespace OrderAPI.Data
 {

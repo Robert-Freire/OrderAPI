@@ -1,15 +1,12 @@
-using Microsoft.EntityFrameworkCore;
 using OrderAPI.Data;
 using OrderAPI.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddDbContext<ProductDbContext>(opts => opts.UseInMemoryDatabase("Products"));
 builder.Services.AddSingleton<ProductDb>();
 builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
 

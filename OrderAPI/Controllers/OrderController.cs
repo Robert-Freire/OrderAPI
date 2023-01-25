@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderAPI.Data;
-//using OrderAPI.Dtos;
-//using OrderAPI.Mapper;
 using OrderAPI.Model;
 
 namespace OrderAPI.Controllers
