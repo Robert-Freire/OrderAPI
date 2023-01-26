@@ -2,7 +2,7 @@
 
 namespace OrderAPI.Data
 {
-    public class ProductDb
+    public class ProductDb : IProductDb
     {
         public IList<Order> Orders { get; set; }
         public IDictionary<int, ProductType> ProductTypes { get; set; }

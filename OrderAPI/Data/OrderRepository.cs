@@ -4,9 +4,9 @@ namespace OrderAPI.Data
 {
     public class OrderRepository : IRepository<Order>
     {
-        private readonly ProductDb ProductDb;
+        private readonly IProductDb ProductDb;
 
-        public OrderRepository(ProductDb productDb)
+        public OrderRepository(IProductDb productDb)
         {
             if (productDb is null)
             {

@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ProductDb>();
+builder.Services.AddSingleton< IProductDb, ProductDb>();
 builder.Services.AddTransient<IRepository<Order>, OrderRepository>();
 
 var app = builder.Build();

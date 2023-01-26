@@ -20,7 +20,7 @@ namespace TestOrderAPI
         }
 
         [TestMethod]
-        public async Task WhenOrderHasData_ThenResponse200()
+        public async Task GetOrder_WhenOrderHasData_ThenResponse200()
         {
             var orderId = 1;
             var orderExpected = new Order() { OrderId = orderId };
@@ -37,7 +37,7 @@ namespace TestOrderAPI
         }
 
         [TestMethod]
-        public async Task WhenOrderHasNoData_ThenResponse400()
+        public async Task GetOrder_WhenOrderHasNoData_ThenResponse404()
         {
 
             var orderResult = await OrderControllerUT.Get(1);

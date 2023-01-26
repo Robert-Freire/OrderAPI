@@ -15,17 +15,35 @@ namespace TestOrderAPI
         }
 
         [TestMethod]
-        public void WhenOrderHasMUltipleLines_ThenRequiredMinWidthCorrectlyCalculated ()
+        public void WhenOrderHasMultipleLines_ThenRequiredMinWidthCorrectlyCalculated ()
         {
-            //Order order = new Order() 
-            //{ 
-            //    OrderLines = new OrderLine[]
-            //    {
-            //        new OrderLine{ ProductType }
-            //    }
-            //}
+            var productType1 = new ProductType 
+            { 
+                Id= 1,
+                Name = "Product type 1",
+                Width = 3.9m
+            };
 
-            //Assert.IsNull(order.RequiredMinWidth);
+            var productType2 = new ProductType
+            {
+                Id = 1,
+                Name = "Product type 1",
+                Width = 5.2m
+            };
+            var quantity1 = 2;
+            var quantity2 = 5;
+
+            var order = new Order()
+            {
+                OrderLines = new OrderLine[]
+                {   
+                     new OrderLine( productType1, quantity1),
+                     new OrderLine( productType2, quantity2),
+
+                }
+            };
+
+            Assert.AreEqual(productType1.Width * quantity1 + productType2.Width * quantity2, order.RequiredMinWidth);
         }
     }
 }
