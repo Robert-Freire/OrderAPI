@@ -10,9 +10,8 @@ namespace OrderAPI.Controllers
     {
         private readonly IRepository<Order> OrderRepository;
 
-        public OrderController(ILogger<OrderController> logger, IRepository<Order> orderRepository)
+        public OrderController(IRepository<Order> orderRepository)
         {
-
             OrderRepository = orderRepository;
         }
 
