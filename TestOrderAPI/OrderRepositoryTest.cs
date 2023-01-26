@@ -22,6 +22,7 @@ namespace TestOrderAPI
             ProductDbMock = new Mock<IProductDb>();
             OrderRepositoryUT = new OrderRepository(ProductDbMock.Object);
         }
+
         [TestMethod]
         public async Task AddOrder_WhenOrderHasRightProductTypes_ThenOrderAdded()
         {
@@ -33,12 +34,12 @@ namespace TestOrderAPI
             };
             var order = new Order()
             {
-                OrderLines = new OrderLine[] 
-                {
-                    new OrderLine(productType, 1)
-                }
+                OrderLines = new OrderLine[] { new OrderLine(productType, 1) }
             };
-            var dictProductTypes = new Dictionary<int, ProductType>() { { productType.Id, productType } };
+            var dictProductTypes = new Dictionary<int, ProductType>()
+            {
+                { productType.Id, productType }
+            };
             ProductDbMock.SetupGet(p => p.ProductTypes).Returns(dictProductTypes);
             var listOrders = new List<Order>();
             ProductDbMock.SetupGet(p => p.Orders).Returns(listOrders);
@@ -47,7 +48,7 @@ namespace TestOrderAPI
 
             Assert.IsNotNull(orderResult);
             Assert.AreEqual(order.OrderLines.Count(), orderResult?.OrderLines?.Count());
-            Assert.AreEqual(1, listOrders.Count());
+            Assert.AreEqual(1, listOrders.Count);
         }
 
         [TestMethod]
@@ -62,12 +63,9 @@ namespace TestOrderAPI
             };
             var order = new Order()
             {
-                OrderLines = new OrderLine[]
-                {
-                    new OrderLine(productType, 1)
-                }
+                OrderLines = new OrderLine[] { new OrderLine(productType, 1) }
             };
-            var dictProductTypes = new Dictionary<int, ProductType>() ;
+            var dictProductTypes = new Dictionary<int, ProductType>();
             ProductDbMock.SetupGet(p => p.ProductTypes).Returns(dictProductTypes);
             var listOrders = new List<Order>();
             ProductDbMock.SetupGet(p => p.Orders).Returns(listOrders);

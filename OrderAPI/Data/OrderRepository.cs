@@ -14,6 +14,7 @@ namespace OrderAPI.Data
             }
             ProductDb = productDb;
         }
+
         public Task<Order?> Get(int id)
         {
             return Task.FromResult(ProductDb.Orders.FirstOrDefault(o => o.OrderId == id));
@@ -21,16 +22,20 @@ namespace OrderAPI.Data
 
         public Task<Order> Add(Order order)
         {
-
-            order.OrderLines?.ToList().ForEach(line =>
-            {
-                var found = ProductDb.ProductTypes.TryGetValue(line.ProductType.Id, out var productType);
-                if (!found || productType == null)
+            order.OrderLines
+                ?.ToList()
+                .ForEach(line =>
                 {
-                    throw new ArgumentException($"ProductType {line.ProductType.Id}not found");
-                }
-                line.ProductType = productType;
-            });
+                    var found = ProductDb.ProductTypes.TryGetValue(
+                        line.ProductType.Id,
+                        out var productType
+                    );
+                    if (!found || productType == null)
+                    {
+                        throw new ArgumentException($"ProductType {line.ProductType.Id}not found");
+                    }
+                    line.ProductType = productType;
+                });
             order.OrderId = ProductDb.GenerateNewOrderId();
             ProductDb.Orders.Add(order);
             return Task.FromResult(order);

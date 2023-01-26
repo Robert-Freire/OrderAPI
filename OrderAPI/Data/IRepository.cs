@@ -1,5 +1,4 @@
-﻿
-namespace OrderAPI.Data
+﻿namespace OrderAPI.Data
 {
     public interface IRepository<T>
     {
